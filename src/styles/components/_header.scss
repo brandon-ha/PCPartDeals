@@ -1,0 +1,18 @@
+.header {
+    background: $midnight-green;
+    padding: $s-size 0;
+}
+
+.header__title {
+    color: white;
+    text-decoration: none;
+    transition: color .3s ease;
+
+    &:hover {
+        color: $off-white;
+    }
+}
+
+.header__content {
+    display: flex;
+}

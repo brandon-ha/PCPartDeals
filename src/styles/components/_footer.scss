@@ -1,0 +1,12 @@
+.footer {
+    background: $midnight-green;
+    display: flex;
+    padding: $s-size 0;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer__link {
+    color: white;
+    text-decoration: none;
+}

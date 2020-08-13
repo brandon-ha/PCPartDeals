@@ -1,0 +1,36 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'IBM Plex Serif', 'Roboto', Arial, Helvetica, sans-serif;
+}
+
+button {
+    cursor: pointer;
+
+    &:disabled {
+        cursor: default;
+    }
+}
+
+.is-active {
+    font-weight: bold;
+}
+
+// Colors
+$midnight-green: #1b262c;
+$dark-blue: #0f4c75;
+$blue: #3282b8;
+$light-blue: #bbe1fa;
+$off-white: #dbe3e5;
+
+// Fonts
+$font-size-large: 1.8rem;
+$font-size-small: 1.4rem;
+
+// Spacing
+$s-size: 1.2rem;
+$m-size: 1.6rem;
+$l-size: 3.2rem;
+$xl-size: 4.8rem;
+$desktop-breakpoint: 48rem;

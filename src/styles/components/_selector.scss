@@ -1,0 +1,12 @@
+.selector {
+    background-color: $dark-blue;
+}
+
+.selector__content {
+    display: flex;
+
+    p {
+        color: $off-white;
+        text-align: center;
+    }
+}
