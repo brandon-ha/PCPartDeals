@@ -5,8 +5,12 @@
 .selector__content {
     display: flex;
 
-    p {
+    * {
         color: $off-white;
         text-align: center;
     }
+}
+
+.selected {
+    color: black;
 }
