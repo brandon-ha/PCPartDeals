@@ -1,34 +1,39 @@
 import React from 'react';
-import snoowrap from 'snoowrap';
+import { connect } from 'react-redux';
+import { setItem } from '../actions/filters';
 
-console.log(process.env.REDDIT_USER_AGENT);
+const Selector = (props) => {
+    return (
+      <div className="selector">
+        <div className="container selector__content">
+          <select value={props.filters.item} onChange={(e) => props.setItem(e.target.value)}>
+            <option value="all">All</option>
+            <option value="cpu">CPU</option>
+            <option value="gpu">Video Card</option>
+            <option value="ram">Memory</option>
+            <option value="mobo">Motherboard</option>
+            <option value="psu">Power Supply</option>
+            <option value="hdd">Hard Drive</option>
+            <option value="ssd">SSD</option>
+            <option value="case">Case</option>
+            <option value="cooler">Cooler</option>
+            <option value="fan">Fan</option>
+          </select>
+        </div>
+      </div>
+    );
+};
 
-const reddit = new snoowrap({
-    userAgent: process.env.REACT_APP_REDDIT_USER_AGENT,
-    clientId: process.env.REACT_APP_REDDIT_CLIENT_ID,
-    clientSecret: process.env.REACT_APP_REDDIT_CLIENT_SECRET,
-    username: process.env.REACT_APP_REDDIT_USERNAME,
-    password: process.env.REACT_APP_REDDIT_PASSWORD
-});
+const mapStateToProps = (state) => {
+  return {
+    filters: state.filters
+  }
+};
 
-reddit.getSubreddit('buildapcsales').search({query: 'cpu NOT cooler NOT Thermal', sort: 'hot'}).map((post) => post.title).then(console.log);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setItem: (item) => dispatch(setItem(item))
+  }
+};
 
-const Selector = () => (
-  <div className="selector">
-    <div className="container selector__content">
-      <button>All</button>
-      <button>CPU</button>
-      <button>Video Card</button>
-      <button>Memory</button>
-      <button>Motherboard</button>
-      <button>Power Supply</button>
-      <button>Hard Drive</button>
-      <button>SSD</button>
-      <button>Case</button>
-      <button>Cooler</button>
-      <button>Fan</button>
-    </div>
-  </div>
-);
-
-export default Selector;
+export default connect(mapStateToProps, mapDispatchToProps)(Selector);
