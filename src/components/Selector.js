@@ -1,12 +1,23 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { setItem } from '../actions/filters';
+import { setItem, setSort } from '../actions/filters';
+import { startSetPosts } from '../actions/posts';
 
 const Selector = (props) => {
+  const onItemChange = (e) => {
+    props.setItem(e.target.value);
+    props.startSetPosts();
+  };
+
+  const onSortChange = (e) => {
+    props.setSort(e.target.value);
+    props.startSetPosts();
+  };
+
     return (
       <div className="selector">
         <div className="container selector__content">
-          <select value={props.filters.item} onChange={(e) => props.setItem(e.target.value)}>
+          <select value={props.filters.item} onChange={onItemChange}>
             <option value="all">All</option>
             <option value="cpu">CPU</option>
             <option value="gpu">Video Card</option>
@@ -18,6 +29,12 @@ const Selector = (props) => {
             <option value="case">Case</option>
             <option value="cooler">Cooler</option>
             <option value="fan">Fan</option>
+          </select>
+          <select value={props.filters.sortBy} onChange={onSortChange}>
+            <option value="hot">Hot</option>
+            <option value="new">New</option>
+            <option value="top">Top</option>
+            <option value="relevance">Relevance</option>
           </select>
         </div>
       </div>
@@ -32,7 +49,9 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    setItem: (item) => dispatch(setItem(item))
+    setItem: (item) => dispatch(setItem(item)),
+    startSetPosts: () => dispatch(startSetPosts()),
+    setSort: (sort) => dispatch(setSort(sort))
   }
 };
 

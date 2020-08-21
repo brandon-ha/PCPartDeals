@@ -4,14 +4,10 @@ export const setItem = (item = '') => ({
     item
 });
 
-// SORT_BY_HOT
-export const sortByHot = () => ({
-    type: 'SORT_BY_HOT'
-});
-
-// SORT_BY_NEW
-export const sortByNew = () => ({
-    type: 'SORT_BY_NEW'
+// SET_SORT
+export const setSort = (sortBy = '') => ({
+    type: 'SET_SORT',
+    sortBy
 });
 
 // SHOW_OUT_OF_STOCK

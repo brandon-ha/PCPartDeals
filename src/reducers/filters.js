@@ -8,19 +8,14 @@ export default (state = filtersReducerDefaults, action) => {
     switch (action.type) {
         case 'SET_ITEM':
           return {
-            ...state,
-            item: action.item
-          };
-        case 'SORT_BY_HOT':
+                ...state,
+                item: action.item
+          }
+        case 'SET_SORT':
             return {
                 ...state,
-                sortBy: 'hot'
-            };
-        case 'SORT_BY_NEW':
-            return {
-                ...state,
-                sortBy: 'new'
-            };
+                sortBy: action.sortBy
+            }
         case 'showOutOfStock':
             return {
                 ...state,

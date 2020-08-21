@@ -1,4 +1,4 @@
-import sub from '../reddit/reddit';
+import fetchPosts from '../selectors/posts';
 
 export const addPost = (post) => ({
     type: 'ADD_POST',
@@ -11,9 +11,10 @@ export const setPosts = (posts) => ({
 });
 
 export const startSetPosts = () => {
-    return (dispatch) => {
-        return sub.getHot().then((res) => {
-            console.log(res);
+    return (dispatch, getState) => {
+        const filters = getState().filters;
+        return fetchPosts(filters).then((res) => {
+            console.log(filters);
             dispatch(setPosts(res));
         });
     }
