@@ -14,7 +14,6 @@ export const startSetPosts = () => {
     return (dispatch, getState) => {
         const filters = getState().filters;
         return fetchPosts(filters).then((res) => {
-            console.log(filters);
             dispatch(setPosts(res));
         });
     }

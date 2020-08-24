@@ -1,7 +1,8 @@
 const filtersReducerDefaults = {
     item: 'all',
     sortBy: 'hot',
-    showOutOfStock: true
+    time: 'all',
+    search: ''
 };
 
 export default (state = filtersReducerDefaults, action) => {
@@ -16,10 +17,19 @@ export default (state = filtersReducerDefaults, action) => {
                 ...state,
                 sortBy: action.sortBy
             }
-        case 'showOutOfStock':
+        case 'SET_TIME':
             return {
                 ...state,
-                showOutOfStock: action.showOutOfStock
+                time: action.time
+            }
+        case 'SET_SEARCH':
+            return {
+                ...state,
+                search: action.search
+            }
+        case 'RESET_FILTERS':
+            return {
+                ...filtersReducerDefaults
             }
         default:
           return state;

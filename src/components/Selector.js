@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { setItem, setSort } from '../actions/filters';
+import { setItem, setSort, setTime, setSearch } from '../actions/filters';
 import { startSetPosts } from '../actions/posts';
+import SearchBar from '../components/SearchBar';
 
 const Selector = (props) => {
   const onItemChange = (e) => {
@@ -13,6 +14,16 @@ const Selector = (props) => {
     props.setSort(e.target.value);
     props.startSetPosts();
   };
+
+  const onTimeChange = (e) => {
+    props.setTime(e.target.value);
+    props.startSetPosts();
+  };
+
+  const onSearchChange = (value) => {
+    props.setSearch(value);
+    props.startSetPosts();
+  } 
 
     return (
       <div className="selector">
@@ -34,8 +45,18 @@ const Selector = (props) => {
             <option value="hot">Hot</option>
             <option value="new">New</option>
             <option value="top">Top</option>
-            <option value="relevance">Relevance</option>
+            {props.filters.item === 'all' && <option value="rising">Rising</option>}
+            {props.filters.item !== 'all' && <option value="relevance">Relevance</option>}
           </select>
+          <select value={props.filters.time} onChange={onTimeChange}>
+            <option value="hour">Past Hour</option>
+            <option value="day">Past Day</option>
+            <option value="week">Past Week</option>
+            <option value="month">Past Month</option>
+            <option value="year">Past Year</option>
+            <option value="all">All</option>
+          </select>
+          <SearchBar filters={props.filters} onChange={onSearchChange}/>
         </div>
       </div>
     );
@@ -51,7 +72,9 @@ const mapDispatchToProps = (dispatch) => {
   return {
     setItem: (item) => dispatch(setItem(item)),
     startSetPosts: () => dispatch(startSetPosts()),
-    setSort: (sort) => dispatch(setSort(sort))
+    setSort: (sort) => dispatch(setSort(sort)),
+    setTime: (time) => dispatch(setTime(time)),
+    setSearch: (terms) => dispatch(setSearch(terms))
   }
 };
 

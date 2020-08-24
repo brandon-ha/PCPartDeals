@@ -10,8 +10,19 @@ export const setSort = (sortBy = '') => ({
     sortBy
 });
 
-// SHOW_OUT_OF_STOCK
-export const showOutOfStock = (status) => ({
-    type: 'SHOW_OUT_OF_STOCK',
-    status
+// SET_TIME
+export const setTime = (time = '') => ({
+    type: 'SET_TIME',
+    time
+});
+
+// SET_SEARCH
+export const setSearch = (search = '') => ({
+    type: 'SET_SEARCH',
+    search
+});
+
+// RESET_FILTERS
+export const resetFilters = () => ({
+    type: 'RESET_FILTERS'
 });

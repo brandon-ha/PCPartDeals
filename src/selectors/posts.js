@@ -1,41 +1,60 @@
 import sub from '../reddit/reddit';
 
-const getNewSearchParams = (current, flair, ...rest) => ({
-        ...current,
-        query: `flair:${flair} ${rest}`
-});
+const getNewSearchParams = (current, flair, ...rest) => {
+    let query = ''
 
-export default ({item, sortBy, showOutOfStock}) => {
+    if (!!flair) {
+        query = `flair:${flair} ${rest}`
+    } else {
+        query = rest
+    }
+
+    return {
+        ...current,
+        query
+    }
+};
+
+export default ({item, sortBy, time, search}) => {
     let searchParams = {
         query: '',
-        sort: sortBy
+        sort: sortBy,
+        time
     };
 
-    // Handle exceptions
     switch (item) {
         case 'all':
-            if (sortBy === 'hot') {
-                return sub.getHot();
-            } else if (sortBy === 'new') {
-                return sub.getNew();
+            if (!search) {
+                switch (sortBy) {
+                    case 'hot':
+                        return sub.getHot({time});
+                    case 'new':
+                        return sub.getNew({time});
+                    case 'top':
+                        return sub.getTop({time});
+                    case 'rising':
+                        return sub.getRising({time});
+                    default:
+                        return 
+                }
             } else {
-                console.log('Invalid sort selected!');
+                searchParams = getNewSearchParams(searchParams, '', search);
                 break;
             }
         case 'cpu':
-            searchParams = getNewSearchParams(searchParams, item, 'NOT Cooler');
+            searchParams = getNewSearchParams(searchParams, item, `NOT Cooler ${search}`);
             break;
         case 'gpu':
-            searchParams = getNewSearchParams(searchParams, item, 'NOT Cooler');
+            searchParams = getNewSearchParams(searchParams, item, `NOT Cooler ${search}`);
             break;
         case 'hdd':
-            searchParams = getNewSearchParams(searchParams, item, 'NOT ssd');
+            searchParams = getNewSearchParams(searchParams, item, `NOT ssd ${search}`);
             break;
         case 'ssd':
-            searchParams = getNewSearchParams(searchParams, item, 'NOT hdd');
+            searchParams = getNewSearchParams(searchParams, item, `NOT hdd ${search}`);
             break;
         default:
-            searchParams = getNewSearchParams(searchParams, item);
+            searchParams = getNewSearchParams(searchParams, item, search);
     }
 
     return sub.search(searchParams);
