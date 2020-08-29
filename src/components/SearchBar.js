@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const WAIT_INTERVAL = 1000;
+const WAIT_INTERVAL = 300;
 const ENTER_KEYCODE = 13;
 
 const SearchBar = (props) => {

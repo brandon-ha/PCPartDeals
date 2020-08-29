@@ -5,6 +5,7 @@ import moment from 'moment';
 const Post = (props) => {
   const sourceString = url.parse(props.url).hostname;
   const redditUrl = url.resolve('https://reddit.com', props.permalink);
+  // const price = props.title.match(/\$((?:\d|\,)*\.?\d+)/g);
   const now = moment(new Date());
   const posted = props.created_utc * 1000;
   const timeDiff = moment.duration(now.diff(posted)).humanize();

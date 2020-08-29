@@ -1,7 +1,11 @@
 .selector {
-    background-color: $dark-blue;
+    // background-color: $dark-blue;
 }
 
 .selector__content {
     display: flex;
+}
+
+.selector__card_body {
+    padding: 0;
 }

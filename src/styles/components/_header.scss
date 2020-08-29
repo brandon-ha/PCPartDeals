@@ -5,8 +5,11 @@
 
 .header__title {
     color: white;
+    background: none;
+    border: none;
     text-decoration: none;
     transition: color .3s ease;
+    outline: none;
 
     &:hover {
         color: $off-white;

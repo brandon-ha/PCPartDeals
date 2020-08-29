@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { resetFilters } from '../actions/filters';
 import { startSetPosts } from '../actions/posts.js';
@@ -13,9 +12,9 @@ const Header = (props) => {
   return (
     <header className="header">
     <div className="container header__content">
-      <Link className="header__title" onClick={onClick}>
+      <button className="header__title" onClick={onClick}>
         <h1>PCPartDeals</h1>
-      </Link>
+      </button>
     </div>
   </header>
 )};
