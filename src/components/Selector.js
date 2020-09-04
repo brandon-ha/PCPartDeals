@@ -13,6 +13,7 @@ const Selector = (props) => {
   const onItemChange = (value) => {
     props.setItem(value);
     props.startSetPosts();
+    
   };
 
   const onSortChange = (value) => {
@@ -33,36 +34,75 @@ const Selector = (props) => {
     return (
       <div className="selector">
         <Accordion className="container selector__content">
-          <Card>
-            <Card.Header>
-              <Accordion.Toggle as={Button} eventKey="0">
-                Filter by Parts
-              </Accordion.Toggle>
-              <Accordion.Toggle as={Button} eventKey="1">
-                Sort by
-              </Accordion.Toggle>
-              <SearchBar filters={props.filters} onChange={onSearchChange}/>
-              <ToggleButtonGroup type="radio" name="sort" value={props.filters.sortBy} onChange={onSortChange}>
-                <ToggleButton value="hot">Hot</ToggleButton>
-                <ToggleButton value="new">New</ToggleButton>
-                <ToggleButton value="top">Top</ToggleButton>
-                {props.filters.item === 'all' && <ToggleButton value="rising">Rising</ToggleButton>}
-                {props.filters.item !== 'all' && <ToggleButton value="relevance">Relevance</ToggleButton>}
-              </ToggleButtonGroup>
+          <Card className="selector__card">
+            <Card.Header className="selector__card__header">
+              <div className="selector__card-selectors">
+                <Accordion.Toggle as={Button} eventKey="0">
+                  Filter by Parts
+                </Accordion.Toggle>
+                <Accordion.Toggle as={Button} eventKey="1">
+                  Posted by
+                </Accordion.Toggle>
+                <SearchBar filters={props.filters} onChange={onSearchChange}/>
+              </div>
+              <div className="selector__card-sort" >
+                <ToggleButtonGroup type="radio" name="sort" value={props.filters.sortBy} onChange={onSortChange}>
+                  <ToggleButton value="hot">
+                      <img src="/images/sort/hot.svg" alt="Hot" className="selector__sort-icon"/>Hot
+                  </ToggleButton>
+                  <ToggleButton value="new">
+                    <img src="/images/sort/new.svg" alt="New" className="selector__sort-icon"/>New
+                  </ToggleButton>
+                  <ToggleButton value="top">
+                    <img src="/images/sort/top.svg" alt="Top" className="selector__sort-icon"/>Top
+                  </ToggleButton>
+                  {props.filters.item === 'all' && !props.filters.search && 
+                    <ToggleButton value="rising">
+                      <img src="/images/sort/rising.svg" alt="Rising" className="selector__sort-icon"/>Rising
+                      </ToggleButton>
+                  }
+                  {(props.filters.item !== 'all' || !!props.filters.search) && 
+                    <ToggleButton value="relevance">
+                      <img src="/images/sort/star.svg" alt="Relevance" className="selector__sort-icon"/>Relevance
+                    </ToggleButton>
+                  }
+                </ToggleButtonGroup>
+              </div>
+              </Card.Header>
               <Accordion.Collapse eventKey="0">
-                <Card.Body className="selector__card_body">
+                <Card.Body>
                   <ToggleButtonGroup type="radio" name="item" value={props.filters.item} onChange={onItemChange}>
                     <ToggleButton value="all">All</ToggleButton>
-                    <ToggleButton value="cpu">CPU</ToggleButton>
-                    <ToggleButton value="gpu">Video Card</ToggleButton>
-                    <ToggleButton value="ram">Memory</ToggleButton>
-                    <ToggleButton value="mobo">Motherboard</ToggleButton>
-                    <ToggleButton value="psu">Power Supply</ToggleButton>
-                    <ToggleButton value="hdd">Hard Drive</ToggleButton>
-                    <ToggleButton value="ssd">SSD</ToggleButton>
-                    <ToggleButton value="case">Case</ToggleButton>
-                    <ToggleButton value="cooler">Cooler</ToggleButton>
-                    <ToggleButton value="fan">Fan</ToggleButton>
+                    <ToggleButton value="cpu">
+                      <img src="/images/items/cpu.svg" alt="CPU" className="selector__item-icon"/>CPU
+                    </ToggleButton>
+                    <ToggleButton value="gpu">
+                      <img src="/images/items/gpu.svg" alt="GPU" className="selector__item-icon"/>Video Card
+                    </ToggleButton>
+                    <ToggleButton value="ram">
+                      <img src="/images/items/ram.svg" alt="RAM" className="selector__item-icon"/>Memory
+                    </ToggleButton>
+                    <ToggleButton value="mobo">
+                      <img src="/images/items/mobo.svg" alt="Motherboard" className="selector__item-icon"/>Motherboard
+                    </ToggleButton>
+                    <ToggleButton value="psu">
+                      <img src="/images/items/psu.svg" alt="Power Supply" className="selector__item-icon"/>Power Supply
+                    </ToggleButton>
+                    <ToggleButton value="hdd">
+                      <img src="/images/items/hdd.svg" alt="Motherboard" className="selector__item-icon"/>Hard Drive
+                    </ToggleButton>
+                    <ToggleButton value="ssd">
+                      <img src="/images/items/ssd.svg" alt="SSD" className="selector__item-icon"/>SSD
+                    </ToggleButton>
+                    <ToggleButton value="case">
+                      <img src="/images/items/case.svg" alt="Case" className="selector__item-icon"/>Case
+                    </ToggleButton>
+                    <ToggleButton value="cooler">
+                      <img src="/images/items/cooler.svg" alt="Cooler" className="selector__item-icon"/>Cooler
+                    </ToggleButton>
+                    <ToggleButton value="fan">
+                      <img src="/images/items/fan.svg" alt="Fan" className="selector__item-icon"/>Fan
+                      </ToggleButton>
                   </ToggleButtonGroup>
                 </Card.Body>
               </Accordion.Collapse>
@@ -78,41 +118,11 @@ const Selector = (props) => {
                   </ToggleButtonGroup>
                 </Card.Body>
               </Accordion.Collapse>
-            </Card.Header>
           </Card>
         </Accordion>
       </div>
     );
 };
-
-          // <select value={props.filters.item} onChange={onItemChange}>
-          //   <option value="all">All</option>
-          //   <option value="cpu">CPU</option>
-          //   <option value="gpu">Video Card</option>
-          //   <option value="ram">Memory</option>
-          //   <option value="mobo">Motherboard</option>
-          //   <option value="psu">Power Supply</option>
-          //   <option value="hdd">Hard Drive</option>
-          //   <option value="ssd">SSD</option>
-          //   <option value="case">Case</option>
-          //   <option value="cooler">Cooler</option>
-          //   <option value="fan">Fan</option>
-          // </select>
-          // <select value={props.filters.sortBy} onChange={onSortChange}>
-          //   <option value="hot">Hot</option>
-          //   <option value="new">New</option>
-          //   <option value="top">Top</option>
-          //   {props.filters.item === 'all' && <option value="rising">Rising</option>}
-          //   {props.filters.item !== 'all' && <option value="relevance">Relevance</option>}
-          // </select>
-          // <select value={props.filters.time} onChange={onTimeChange}>
-          //   <option value="hour">Past Hour</option>
-          //   <option value="day">Past Day</option>
-          //   <option value="week">Past Week</option>
-          //   <option value="month">Past Month</option>
-          //   <option value="year">Past Year</option>
-          //   <option value="all">All</option>
-          // </select>
 
 const mapStateToProps = (state) => {
   return {

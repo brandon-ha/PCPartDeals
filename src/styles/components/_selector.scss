@@ -1,11 +1,24 @@
 .selector {
-    // background-color: $dark-blue;
+    background-color: $dark-blue;
 }
 
-.selector__content {
+.selector__card {
+    background: $dark-blue;
+    border: none;
+}
+
+.selector__card__header {
     display: flex;
+    justify-content: space-between;
 }
 
-.selector__card_body {
-    padding: 0;
+.selector__sort-icon {
+    height: 40px;
+    width: 40px;
+    padding-right: $s-size;
+}
+
+.selector__item-icon {
+    height: 60px;
+    width: 60px;
 }

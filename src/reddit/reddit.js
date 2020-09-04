@@ -8,7 +8,7 @@ const reddit = new snoowrap({
     password: process.env.REACT_APP_REDDIT_PASSWORD
 });
 
-// reddit.getSubreddit('buildapcsales').search({query: 'cpu', sort: 'hot'}).map((post) => post.title).then(console.log);
+reddit.getSubreddit('buildapcsales').getHot({time: 'hour'}).then(console.log);
 
 const sub = reddit.getSubreddit('buildapcsales');
 

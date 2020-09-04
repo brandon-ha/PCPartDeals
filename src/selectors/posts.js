@@ -15,7 +15,7 @@ const getNewSearchParams = (current, flair, ...rest) => {
     }
 };
 
-export default ({item, sortBy, time, search}) => {
+const fetchPosts = ({item, sortBy, time, search}) => {
     let searchParams = {
         query: '',
         sort: sortBy,
@@ -59,3 +59,10 @@ export default ({item, sortBy, time, search}) => {
 
     return sub.search(searchParams);
 };
+
+const fetchMorePosts = (post) => {
+    return post.fetchMore({amount: 25});
+};
+
+
+export { fetchPosts, fetchMorePosts };
