@@ -21,6 +21,7 @@ Pulls data from /r/buildapcsales and presents the deals posted in a more user-fr
 - [ ] Email/Browser notifications
 - [ ] Handle Amazon thumbnails
 - [ ] Placeholder images
+- [ ] Scroll to Top shortcut
 
 ## Usage
 Will be deployed once deemed ready.
