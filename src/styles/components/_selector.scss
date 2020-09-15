@@ -9,7 +9,46 @@
 
 .selector__card__header {
     display: flex;
+    align-items: center;
     justify-content: space-between;
+    background: none;
+    border: none;
+}
+
+.selector__card-selectors {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-shrink: 2;
+}
+
+.selector__button {
+    margin-right: $s-size;
+    width: 50%;
+}
+
+.selector-parts {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .btn {
+        height: 110px;
+        width: 110px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-size: 1rem;
+    }
+}
+
+.selector-sorts {
+    .btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 }
 
 .selector__sort-icon {

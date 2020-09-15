@@ -7,12 +7,20 @@
     line-height: 1.4;
 }
 
+p {
+    margin: 0;
+}
+
 button {
     cursor: pointer;
 
     &:disabled {
         cursor: default;
     }
+}
+
+.btn {
+    @extend .shadow-none;
 }
 
 .is-active {

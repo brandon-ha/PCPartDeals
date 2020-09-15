@@ -11,11 +11,11 @@ const Header = (props) => {
 
   return (
     <header className="header">
-    <div className="container header__content">
-      <button className="header__title" onClick={onClick}>
-        <h1>PCPartDeals</h1>
-      </button>
-    </div>
+      <div className="container header__content">
+        <button className="header__title" onClick={onClick}>
+          <h1>PCPartDeals</h1>
+        </button>
+      </div>
   </header>
 )};
 

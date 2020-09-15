@@ -9,7 +9,34 @@ import { startSetPosts } from '../actions/posts';
 import SearchBar from '../components/SearchBar';
 import { Card } from 'react-bootstrap';
 
+const parts = [
+  { val: "cpu", label: "CPU" },
+  { val: "gpu", label: "Video Card" },
+  { val: "ram", label: "Memory" },
+  { val: "mobo", label: "Motherboard" },
+  { val: "psu", label: "Power Supply" },
+  { val: "ssd", label: "SSD" },
+  { val: "hdd", label: "Hard Drive" },
+  { val: "case", label: "Case" },
+  { val: "cooler", label: "Cooler" },
+  { val: "fan", label: "Fan" }
+];
+
+const sorts = [
+  { val: "hot", label: "Hot" },
+  { val: "new", label: "New" },
+  { val: "top", label: "Top" }
+];
+
 const Selector = (props) => {
+  const generateButton = (srcDir, buttonInfo, style) => {
+    return (
+      <ToggleButton value={buttonInfo.val} key={buttonInfo.label}>
+        <img src={`${srcDir}/${buttonInfo.val}.svg`} alt={buttonInfo.label} className={style}/>{buttonInfo.label}
+      </ToggleButton>
+    );
+  };
+
   const onItemChange = (value) => {
     props.setItem(value);
     props.startSetPosts();
@@ -37,72 +64,33 @@ const Selector = (props) => {
           <Card className="selector__card">
             <Card.Header className="selector__card__header">
               <div className="selector__card-selectors">
-                <Accordion.Toggle as={Button} eventKey="0">
-                  Filter by Parts
+                <Accordion.Toggle className="selector__button" as={Button} eventKey="0">
+                  <p>Filter by Parts</p>
                 </Accordion.Toggle>
-                <Accordion.Toggle as={Button} eventKey="1">
-                  Posted by
+                <Accordion.Toggle className="selector__button" as={Button} eventKey="1">
+                <p>Posted by</p>
                 </Accordion.Toggle>
                 <SearchBar filters={props.filters} onChange={onSearchChange}/>
               </div>
-              <div className="selector__card-sort" >
-                <ToggleButtonGroup type="radio" name="sort" value={props.filters.sortBy} onChange={onSortChange}>
-                  <ToggleButton value="hot">
-                      <img src="/images/sort/hot.svg" alt="Hot" className="selector__sort-icon"/>Hot
-                  </ToggleButton>
-                  <ToggleButton value="new">
-                    <img src="/images/sort/new.svg" alt="New" className="selector__sort-icon"/>New
-                  </ToggleButton>
-                  <ToggleButton value="top">
-                    <img src="/images/sort/top.svg" alt="Top" className="selector__sort-icon"/>Top
-                  </ToggleButton>
-                  {props.filters.item === 'all' && !props.filters.search && 
+                <ToggleButtonGroup className="selector-sorts" type="radio" name="sort" value={props.filters.sortBy} onChange={onSortChange}>
+                  { sorts.map((sort) => generateButton('/images/sort', sort, "selector__sort-icon")) }
+                  { props.filters.item === 'all' && !props.filters.search && 
                     <ToggleButton value="rising">
                       <img src="/images/sort/rising.svg" alt="Rising" className="selector__sort-icon"/>Rising
-                      </ToggleButton>
+                    </ToggleButton>
                   }
-                  {(props.filters.item !== 'all' || !!props.filters.search) && 
+                  { (props.filters.item !== 'all' || !!props.filters.search) && 
                     <ToggleButton value="relevance">
-                      <img src="/images/sort/star.svg" alt="Relevance" className="selector__sort-icon"/>Relevance
+                      <img src="/images/sort/relevance.svg" alt="Relevance" className="selector__sort-icon"/>Relevance
                     </ToggleButton>
                   }
                 </ToggleButtonGroup>
-              </div>
               </Card.Header>
               <Accordion.Collapse eventKey="0">
                 <Card.Body>
-                  <ToggleButtonGroup type="radio" name="item" value={props.filters.item} onChange={onItemChange}>
+                  <ToggleButtonGroup className="selector-parts" type="radio" name="item" value={props.filters.item} onChange={onItemChange}>
                     <ToggleButton value="all">All</ToggleButton>
-                    <ToggleButton value="cpu">
-                      <img src="/images/items/cpu.svg" alt="CPU" className="selector__item-icon"/>CPU
-                    </ToggleButton>
-                    <ToggleButton value="gpu">
-                      <img src="/images/items/gpu.svg" alt="GPU" className="selector__item-icon"/>Video Card
-                    </ToggleButton>
-                    <ToggleButton value="ram">
-                      <img src="/images/items/ram.svg" alt="RAM" className="selector__item-icon"/>Memory
-                    </ToggleButton>
-                    <ToggleButton value="mobo">
-                      <img src="/images/items/mobo.svg" alt="Motherboard" className="selector__item-icon"/>Motherboard
-                    </ToggleButton>
-                    <ToggleButton value="psu">
-                      <img src="/images/items/psu.svg" alt="Power Supply" className="selector__item-icon"/>Power Supply
-                    </ToggleButton>
-                    <ToggleButton value="hdd">
-                      <img src="/images/items/hdd.svg" alt="Motherboard" className="selector__item-icon"/>Hard Drive
-                    </ToggleButton>
-                    <ToggleButton value="ssd">
-                      <img src="/images/items/ssd.svg" alt="SSD" className="selector__item-icon"/>SSD
-                    </ToggleButton>
-                    <ToggleButton value="case">
-                      <img src="/images/items/case.svg" alt="Case" className="selector__item-icon"/>Case
-                    </ToggleButton>
-                    <ToggleButton value="cooler">
-                      <img src="/images/items/cooler.svg" alt="Cooler" className="selector__item-icon"/>Cooler
-                    </ToggleButton>
-                    <ToggleButton value="fan">
-                      <img src="/images/items/fan.svg" alt="Fan" className="selector__item-icon"/>Fan
-                      </ToggleButton>
+                    { parts.map((part) => generateButton('/images/items', part, "selector__item-icon")) }
                   </ToggleButtonGroup>
                 </Card.Body>
               </Accordion.Collapse>

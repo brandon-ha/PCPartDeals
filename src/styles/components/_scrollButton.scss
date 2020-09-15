@@ -1,0 +1,12 @@
+.scroll-button {
+    position: fixed;
+    height: 40px;
+    width: 40px;
+    right: .8rem;
+    bottom: .8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0.5;
+}

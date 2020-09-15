@@ -41,6 +41,9 @@ const fetchPosts = ({item, sortBy, time, search}) => {
                 searchParams = getNewSearchParams(searchParams, '', search);
                 break;
             }
+        case 'mobo':
+            searchParams = getNewSearchParams(searchParams, item, `OR flair:motherboard ${search}`);
+            break;
         case 'cpu':
             searchParams = getNewSearchParams(searchParams, item, `NOT Cooler ${search}`);
             break;
@@ -51,7 +54,10 @@ const fetchPosts = ({item, sortBy, time, search}) => {
             searchParams = getNewSearchParams(searchParams, item, `NOT ssd ${search}`);
             break;
         case 'ssd':
-            searchParams = getNewSearchParams(searchParams, item, `NOT hdd ${search}`);
+            searchParams = getNewSearchParams(searchParams, item, `OR flair:"m2. ssd" NOT hdd ${search}`);
+            break;
+        case 'cooler':
+            searchParams = getNewSearchParams(searchParams, item, `OR flair:"CPU Cooler" ${search}`);
             break;
         default:
             searchParams = getNewSearchParams(searchParams, item, search);
