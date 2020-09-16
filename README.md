@@ -8,20 +8,19 @@ Pulls data from /r/buildapcsales and presents the deals posted in a more user-fr
 - [x] Search 
 - [x] Sorting by component
 - [x] Selecting time frame for posts
+- [x] Placeholder images
+- [x] Scroll to Top shortcut
 - [ ] Dark mode
 - [ ] Default tab selection
 - [ ] Item Button Reordering
 - [ ] Item Button Hiding
 - [ ] Reddit account authentication
 - [ ] Mobile view
-- [ ] Title processing
-- [ ] Pull imagers from other sources
+- [ ] Pull images from other sources (Amazon, newwegg, etc.)
 - [ ] Post submission
 - [ ] Real time polling
 - [ ] Email/Browser notifications
-- [ ] Handle Amazon thumbnails
-- [ ] Placeholder images
-- [ ] Scroll to Top shortcut
+
 
 ## Usage
 Will be deployed once deemed ready.
