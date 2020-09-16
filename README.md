@@ -23,4 +23,5 @@ Pulls data from /r/buildapcsales and presents the deals posted in a more user-fr
 
 
 ## Usage
-Will be deployed once deemed ready.
+Check it out here:
+[https://pcpartdeals.vercel.app/](https://pcpartdeals.vercel.app/)
