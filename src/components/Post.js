@@ -63,6 +63,7 @@ const Post = (props) => {
   return (
     <Card body className="post">
       <div className="post-container">
+        <h1 className="post-upvotes">{props.ups}</h1>
         <a href={props.url} rel='noopener noreferrer' target="_blank" className="post__image-a">
           <div className="post__image-box">
             {productImage}
@@ -72,7 +73,6 @@ const Post = (props) => {
           {props.title}
         </a>
         <div className="post__info-block">
-          <p>Upvotes: {props.ups}</p>
           {props.domain !== "self.buildapcsales" && <p><small>{props.domain}</small></p>}
           <p>Posted {timeDiff} ago</p>
           <a href={redditUrl} rel='noopener noreferrer' target="_blank">Reddit Thread</a>
