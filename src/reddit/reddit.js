@@ -1,15 +1,28 @@
 import snoowrap from 'snoowrap';
 
-const reddit = new snoowrap({
+let creds = {
     userAgent: process.env.REACT_APP_REDDIT_USER_AGENT,
     clientId: process.env.REACT_APP_REDDIT_CLIENT_ID,
-    clientSecret: process.env.REACT_APP_REDDIT_CLIENT_SECRET,
-    username: process.env.REACT_APP_REDDIT_USERNAME,
-    password: process.env.REACT_APP_REDDIT_PASSWORD
-});
+    clientSecret: process.env.REACT_APP_REDDIT_CLIENT_SECRET
+};
 
-reddit.getSubreddit('buildapcsales').getHot({time: 'hour'}).then(console.log);
+if (!!process.env.REACT_APP_REDDIT_REFRESH_TOKEN) {
+    creds = {
+        ...creds,
+        refreshToken: process.env.REACT_APP_REDDIT_REFRESH_TOKEN
+    };
+} else {
+    creds = {
+        ...creds,
+        username: process.env.REACT_APP_REDDIT_USERNAME,
+        password: process.env.REACT_APP_REDDIT_PASSWORD
+    };
+}
+
+const reddit = new snoowrap(creds);
 
 const sub = reddit.getSubreddit('buildapcsales');
+
+reddit.getSubreddit('buildapcsales').getHot({time: 'hour'}).then(console.log);
 
 export default sub;

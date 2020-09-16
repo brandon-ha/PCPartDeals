@@ -5,9 +5,9 @@ const ScrollToTopButton = () =>  {
     const [visible, setVisible] = useState(false);
 
     const checkScroll = () => {
-        if (window.pageYOffset > 500 && !visible) {
+        if (window.pageYOffset > 200 && !visible) {
             setVisible(true);
-        } else if (window.pageYOffset <= 500 && visible) {
+        } else if (window.pageYOffset <= 200 && visible) {
             setVisible(false);
         }
     };
@@ -25,9 +25,7 @@ const ScrollToTopButton = () =>  {
     });
 
     return (
-        <>
-            { visible ? <CgArrowUpO className="scroll-button" onClick={scrollTop}/> : null }
-        </>
+        <CgArrowUpO className={visible ? "scroll-button" : "scroll-button-hidden"} onClick={scrollTop} />
     );
 };
 

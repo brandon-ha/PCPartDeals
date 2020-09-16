@@ -4,10 +4,45 @@
     width: 40px;
     right: .8rem;
     bottom: .8rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     cursor: pointer;
     opacity: 0.5;
-    transition: opacity 0.5s;
+    animation: fadeIn 0.5s;
+
+    &-hidden {
+        @extend .scroll-button;
+        height: 0px;
+        width: 0px;
+        right: .8rem;
+        bottom: .8rem;
+        animation: fadeOut 0.5s;
+        opacity: 0;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0%;
+        height: 0px;
+        width: 0px;
+    }
+
+    to {
+        opacity: 50%;
+        height: 40px;
+        width: 40px;
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 50%;
+        height: 40px;
+        width: 40px;
+    }
+
+    to {
+        opacity: 0%;
+        height: 0px;
+        width: 0px;
+    }
 }
