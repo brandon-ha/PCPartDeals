@@ -5,9 +5,10 @@ const ScrollToTopButton = () =>  {
     const [visible, setVisible] = useState(false);
 
     const checkScroll = () => {
-        if (window.pageYOffset > 200 && !visible) {
+        const offset = window.pageYOffset;
+        if (offset > 200 && !visible) {
             setVisible(true);
-        } else if (window.pageYOffset <= 200 && visible) {
+        } else if (offset <= 200 && visible) {
             setVisible(false);
         }
     };

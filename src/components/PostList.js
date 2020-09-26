@@ -13,12 +13,15 @@ const PostList = (props) => {
   };
   
   useEffect(() => {
-    window.addEventListener('scroll', trackScroll);
+    if (props.flags.infiniteScroll) {
+      window.addEventListener('scroll', trackScroll);
 
-    return () => {
-      window.removeEventListener('scroll', trackScroll);
+      return () => {
+        window.removeEventListener('scroll', trackScroll);
+      }
     }
-  });
+   // eslint-disable-next-line
+  }, [props.flags.infiniteScroll]);
 
   return (
     <div id="post-list" className="container list">
@@ -38,7 +41,8 @@ const PostList = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    posts: state.posts
+    posts: state.posts,
+    flags: state.flags
   }
 };
 

@@ -1,29 +1,39 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { resetFilters } from '../actions/filters';
-import { startSetPosts } from '../actions/posts.js';
+import { startSetPosts } from '../actions/posts';
+import { toggleInfiniteScroll } from '../actions/flags';
+import { FaRegPauseCircle, FaRegPlayCircle } from 'react-icons/fa';
 
 const Header = (props) => {
-  const onClick = () => {
-    props.resetFilters();
-    props.startSetPosts();
+  const toggleInfiniteScroll = () => {
+    props.toggleInfiniteScroll();
   };
 
   return (
-    <header className="header">
-      <div className="container header__content">
-        <button className="header__title" onClick={onClick}>
+    <header className="header p-4">
+      <div className="header__content">
+        <a className="header__title" href="/">
           <h1>PCPartDeals</h1>
-        </button>
+        </a>
+        { props.flags.infiniteScroll && <FaRegPauseCircle className="header__pause-button" onClick={toggleInfiniteScroll} /> }
+        { !props.flags.infiniteScroll && <FaRegPlayCircle className="header__pause-button" onClick={toggleInfiniteScroll} /> }
       </div>
   </header>
 )};
 
-const mapDispatchToProps = (dispatch) => {
+const mapStateToProps= (state) => {
   return {
-    resetFilters: () => dispatch(resetFilters()),
-    startSetPosts: () => dispatch(startSetPosts())
+    flags: state.flags
   }
 };
 
-export default connect(undefined, mapDispatchToProps)(Header);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    resetFilters: () => dispatch(resetFilters()),
+    startSetPosts: () => dispatch(startSetPosts()),
+    toggleInfiniteScroll: () => dispatch(toggleInfiniteScroll()), 
+  }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

@@ -2,10 +2,26 @@ import React from 'react';
 import url from 'url';
 import moment from 'moment';
 import Card from 'react-bootstrap/Card';
+import { AiFillRedditCircle, AiFillClockCircle } from 'react-icons/ai'; 
 
 const parts = ['cpu', 'gpu', 'ram', 'mobo', 'psu', 'm.2 ssd', 'ssd', 'hdd', 'case', 'cpu cooler', 'fan'];
 
 const Post = (props) => {
+  let classList = ['post'];
+
+  if (props.id === "go3ezv") {
+    return null;
+  }
+
+  switch (props.link_flair_css_class) {
+    case ('oos'):
+    case ('expired'):
+      classList.push('expired');
+      break;
+    default:
+      break;
+  }
+
   // Generates placeholder image for post thumbnail
   const generatePlaceholder = (flair = '') => {
     if (!flair) {
@@ -61,7 +77,7 @@ const Post = (props) => {
   }
 
   return (
-    <Card body className="post">
+    <Card body className={classList}>
       <div className="post-container">
         <h1 className="post-upvotes">{props.ups}</h1>
         <a href={props.url} rel='noopener noreferrer' target="_blank" className="post__image-a">
@@ -74,9 +90,9 @@ const Post = (props) => {
         </a>
         <div className="post__info-block">
           {props.domain !== "self.buildapcsales" && <p><small>{props.domain}</small></p>}
-          <p>Posted {timeDiff} ago</p>
-          <a href={redditUrl} rel='noopener noreferrer' target="_blank">Reddit Thread</a>
+          <span><AiFillClockCircle /><span> {timeDiff} ago</span></span>
         </div>
+        <a href={redditUrl} rel='noopener noreferrer' target="_blank" className="post__reddit"><AiFillRedditCircle /></a>
       </div>
     </Card>
   );

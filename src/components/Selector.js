@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import Accordion from 'react-bootstrap/Accordion';
 import ToggleButtonGroup from 'react-bootstrap/ToggleButtonGroup';
@@ -29,6 +29,12 @@ const sorts = [
 ];
 
 const Selector = (props) => {
+  const [sticky, setSticky] = useState(false);
+
+  const scrollTop = () => {
+    window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
   const generateButton = (srcDir, buttonInfo, style) => {
     return (
       <ToggleButton value={buttonInfo.val} key={buttonInfo.label}>
@@ -39,27 +45,47 @@ const Selector = (props) => {
 
   const onItemChange = (value) => {
     props.setItem(value);
+    scrollTop();
     props.startSetPosts();
-    
   };
 
   const onSortChange = (value) => {
     props.setSort(value);
+    scrollTop();
     props.startSetPosts();
   };
 
   const onTimeChange = (value) => {
     props.setTime(value);
+    scrollTop();
     props.startSetPosts();
   };
 
   const onSearchChange = (value) => {
     props.setSearch(value);
+    scrollTop();
     props.startSetPosts();
-  } 
+  }
+
+  const checkScroll = () => {
+    const offset = window.pageYOffset;
+    if (offset > 100 && !sticky) {
+        setSticky(true);
+    } else if (offset <= 100 && sticky) {
+        setSticky(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', checkScroll);
+    
+    return () => {
+        window.removeEventListener('scroll', checkScroll);
+    };
+});
 
     return (
-      <div className="selector">
+      <div className={sticky ? "selector-sticky" : "selector"}>
         <Accordion className="container selector__content">
           <Card className="selector__card">
             <Card.Header className="selector__card__header">

@@ -1,10 +1,5 @@
 import { fetchPosts, fetchMorePosts } from '../selectors/posts';
 
-export const addPost = (post) => ({
-    type: 'ADD_POST',
-    post
-});
-
 export const setPosts = (posts) => ({
     type: 'SET_POSTS',
     posts

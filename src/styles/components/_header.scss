@@ -1,6 +1,11 @@
 .header {
     background: $midnight-green;
-    padding: $s-size 0;
+}
+
+.header__content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .header__title {
@@ -12,10 +17,23 @@
     outline: none;
 
     &:hover {
-        color: $off-white;
+        color: hsla(0, 0, 100%, 0.5);
+        text-decoration: none;
+    }
+
+    &:focus {
+        border: none;
+        outline: none;
     }
 }
 
-.header__content {
-    display: flex;
+.header__pause-button {
+    height: 40px;
+    width: auto;
+    color: white;
+    transition: color .3s ease;
+
+    &:hover {
+        color: hsla(0, 0, 100%, 0.5);
+    }
 }

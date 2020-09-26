@@ -23,6 +23,4 @@ const reddit = new snoowrap(creds);
 
 const sub = reddit.getSubreddit('buildapcsales');
 
-reddit.getSubreddit('buildapcsales').getHot({time: 'hour'}).then(console.log);
-
 export default sub;

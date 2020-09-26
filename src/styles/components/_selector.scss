@@ -1,5 +1,13 @@
 .selector {
     background-color: $dark-blue;
+
+    &-sticky {
+        @extend .selector;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1;
+    }
 }
 
 .selector__card {

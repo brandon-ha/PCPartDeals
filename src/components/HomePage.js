@@ -6,11 +6,11 @@ import PostList from './PostList';
 import Footer from './Footer';
 
 const HomePage = () => (
-    <div>
+    <div className="homepage">
         <Header />
         <Selector />
-        <ScrollToTopButton />
         <PostList />
+        <ScrollToTopButton />
         <Footer />
     </div>
 );
