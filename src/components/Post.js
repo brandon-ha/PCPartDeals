@@ -2,9 +2,9 @@ import React from 'react';
 import url from 'url';
 import moment from 'moment';
 import Card from 'react-bootstrap/Card';
-import { AiFillRedditCircle, AiFillClockCircle } from 'react-icons/ai'; 
+import { AiFillRedditCircle, AiFillClockCircle } from 'react-icons/ai';
 
-const parts = ['cpu', 'gpu', 'ram', 'mobo', 'psu', 'm.2 ssd', 'ssd', 'hdd', 'case', 'cpu cooler', 'fan'];
+const parts = ['cpu', 'gpu', 'ram', 'mobo', 'psu', 'm2', 'ssd', 'hdd', 'case', 'cpu cooler', 'fan'];
 
 const Post = (props) => {
   let classList = ['post'];
@@ -36,6 +36,8 @@ const Post = (props) => {
       flair = 'mobo';
     } else if (flair === 'cpu cooler') { 
       flair = 'cooler';
+    } else if (flair === 'm.2 ssd') {
+      flair = 'm2';
     }
 
     if (parts.includes(flair)) {

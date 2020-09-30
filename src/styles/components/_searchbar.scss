@@ -3,4 +3,9 @@
     padding: $s-size;
     font-size: $font-size-small;
     width: 100%;
+    border-radius: 4px;
+    
+    &:focus {
+        outline: none;
+    }
 }

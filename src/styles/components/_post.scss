@@ -1,8 +1,8 @@
 .post {
-    margin: $s-size 0;
     width: 80%;
     border: none;
-    box-shadow: 0 2px 4px 0 hsla(0, 0, 0, 0.2); 
+    box-shadow: 0 2px 4px 0 hsla(0, 0, 0, 0.2);
+    margin-bottom: $s-size;
 }
 
 .post-container {

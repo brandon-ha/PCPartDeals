@@ -69,9 +69,9 @@ const Selector = (props) => {
 
   const checkScroll = () => {
     const offset = window.pageYOffset;
-    if (offset > 100 && !sticky) {
+    if (offset > 104 && !sticky) {
         setSticky(true);
-    } else if (offset <= 100 && sticky) {
+    } else if (offset <= 104 && sticky) {
         setSticky(false);
     }
   };

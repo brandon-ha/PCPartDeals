@@ -1,6 +1,6 @@
 const flagsReducerDefaults = {
     darkMode: false,
-    loading: true,
+    loading: 'start',
     infiniteScroll: true
 };
 
