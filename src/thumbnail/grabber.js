@@ -18,4 +18,4 @@ const getImageUrl = async (html) => {
     console.log(span.html());
 }
 
-getImageUrl(getHTML('https://www.amazon.com/Sabrent-Rocket-Internal-Performance-SB-RKTQ-2TB/dp/B0829DZH2W/ref=sr_1_4?dchild=1&keywords=nvme+m.2&qid=1601265574&sr=8-4'));
+// getImageUrl(getHTML('https://www.amazon.com/Sabrent-Rocket-Internal-Performance-SB-RKTQ-2TB/dp/B0829DZH2W/ref=sr_1_4?dchild=1&keywords=nvme+m.2&qid=1601265574&sr=8-4'));

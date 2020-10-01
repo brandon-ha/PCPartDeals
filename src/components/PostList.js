@@ -4,6 +4,7 @@ import Post from './Post';
 import { startGetMorePosts } from '../actions/posts';
 import Loading from './Loading';
 import '../thumbnail/grabber';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 const PostList = (props) => {
   const trackScroll = () => {
@@ -27,14 +28,16 @@ const PostList = (props) => {
   return (
     <>
       { props.flags.loading === 'start' && <Loading /> }
-      <div id="post-list" className="container list">
+      <TransitionGroup id="post-list" className="container list">
         {
           props.posts.map((postInfo) => (
-            <Post key={postInfo.id} {...postInfo} />
+            <CSSTransition key={postInfo.id} timeout={500} classNames="list-item">
+              <Post  {...postInfo} />
+            </CSSTransition>
           ))
         }
-        { props.flags.loading === 'end' && <Loading /> }
-      </div>
+      </TransitionGroup>
+      { props.flags.loading === 'end' && <Loading /> }
     </>
   );
 };

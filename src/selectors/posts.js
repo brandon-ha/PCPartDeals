@@ -67,6 +67,7 @@ const fetchPosts = ({item, sortBy, time, search}) => {
 };
 
 const fetchMorePosts = (post) => {
+    console.log('fetching');
     return post.fetchMore({amount: 25});
 };
 
