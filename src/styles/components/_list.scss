@@ -4,6 +4,11 @@
     align-items: center;
     justify-content: center;
     margin-top: $s-size;
+
+    &-offset {
+        @extend .list;
+        margin-top: 96px;
+    };
 }
 
 .list-item-enter {
@@ -11,12 +16,12 @@
 }
 
 .list-item-enter-active {
-    opacity: 1;
+    opacity: 0.5;
     transition: opacity 300ms ease-in;
 }
 
 .list-item-exit {
-    opacity: 1;
+    opacity: 0.5;
 }
 
 .list-item-exit-active {

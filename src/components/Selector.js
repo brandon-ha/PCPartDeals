@@ -33,7 +33,7 @@ const Selector = (props) => {
 
   const scrollTop = () => {
     window.scrollTo({top: 0, behavior: 'smooth'});
-}
+  };
 
   const generateButton = (srcDir, buttonInfo, style) => {
     return (

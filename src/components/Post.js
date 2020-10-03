@@ -3,6 +3,7 @@ import url from 'url';
 import moment from 'moment';
 import Card from 'react-bootstrap/Card';
 import { AiFillRedditCircle, AiFillClockCircle } from 'react-icons/ai';
+import { ImArrowUp } from 'react-icons/im';
 
 const parts = ['cpu', 'gpu', 'ram', 'mobo', 'psu', 'm2', 'ssd', 'hdd', 'case', 'cpu cooler', 'fan'];
 
@@ -38,6 +39,8 @@ const Post = (props) => {
       flair = 'cooler';
     } else if (flair === 'm.2 ssd') {
       flair = 'm2';
+    } else if (flair.includes('expired')) {
+      flair = 'expired';
     }
 
     if (parts.includes(flair)) {
@@ -81,7 +84,10 @@ const Post = (props) => {
   return (
     <Card body className={classList}>
       <div className="post-container">
-        <h1 className="post-upvotes">{props.ups}</h1>
+        <span className="post__count">
+          <ImArrowUp />
+          <h1>{props.ups}</h1>
+        </span>
         <a href={props.url} rel='noopener noreferrer' target="_blank" className="post__image-a">
           <div className="post__image-box">
             {productImage}
@@ -94,7 +100,7 @@ const Post = (props) => {
           {props.domain !== "self.buildapcsales" && <p><small>{props.domain}</small></p>}
           <span><AiFillClockCircle /><span> {timeDiff} ago</span></span>
         </div>
-        <a href={redditUrl} rel='noopener noreferrer' target="_blank" className="post__reddit"><AiFillRedditCircle /></a>
+        <a href={redditUrl} rel='noopener noreferrer' target="_blank" className="post__reddit"><AiFillRedditCircle className="post__reddit-icon"/></a>
       </div>
     </Card>
   );

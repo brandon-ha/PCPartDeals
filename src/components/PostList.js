@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import Post from './Post';
 import { startGetMorePosts } from '../actions/posts';
@@ -7,6 +7,8 @@ import '../thumbnail/grabber';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 const PostList = (props) => {
+  const [pushedDown, setpushedDown] = useState(false);
+
   const trackScroll = () => {
     if (props.flags.infiniteScroll) {
       const list = document.getElementById('post-list');
@@ -14,6 +16,13 @@ const PostList = (props) => {
         props.startGetMorePosts();
         window.removeEventListener('scroll', trackScroll);
       }
+    }
+
+    const offset = window.pageYOffset;
+    if (offset > 104 && !pushedDown) {
+      setpushedDown(true);
+    } else if (offset <= 104 && pushedDown) {
+      setpushedDown(false);
     }
   };
   
@@ -28,7 +37,7 @@ const PostList = (props) => {
   return (
     <>
       { props.flags.loading === 'start' && <Loading /> }
-      <TransitionGroup id="post-list" className="container list">
+      <TransitionGroup id="post-list" className={pushedDown ? "container list-offset" : "container list"}>
         {
           props.posts.map((postInfo) => (
             <CSSTransition key={postInfo.id} timeout={500} classNames="list-item">

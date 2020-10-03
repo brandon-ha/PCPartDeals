@@ -3,6 +3,7 @@
     border: none;
     box-shadow: 0 2px 4px 0 hsla(0, 0, 0, 0.2);
     margin-bottom: $s-size;
+    transition: opacity 300ms ease-in;
 }
 
 .post-container {
@@ -17,9 +18,11 @@
     height: auto;
 }
 
-.post-upvotes {
+.post__count {
     grid-row: span 2;
     place-self: center;
+    display: flex;
+    align-items: center;
 }
 
 .post__title {
@@ -89,14 +92,19 @@
     grid-row: 2;
     grid-column: 7;
     place-self: end;
-    color: hsla(0, 0, 0, 0.2);
+    transition: color 0.3s ease;
+}
 
-    .AiFillRedditCircle {
-        height: 100px;
-        width: auto;
+.post__reddit-icon {
+    font-size: 40px;
+    color: hsla(0, 0, 0, 0.2);
+    transition: color 0.3s ease;
+
+    &:hover {
+        color: hsla(0, 0, 0, 0.5);
     }
 }
 
 .expired {
-    background: rgba(255, 0, 0, 50%);
+    opacity: 0.5;
 }
