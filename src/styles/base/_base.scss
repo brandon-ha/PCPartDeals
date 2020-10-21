@@ -2,7 +2,7 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: 'IBM Plex Serif', 'Roboto', Arial, Helvetica, sans-serif;
+    font-family: 'Jost', 'Roboto', Arial, Helvetica, sans-serif;
     font-size: 16px;
     line-height: 1.4;
 }
@@ -17,6 +17,10 @@ button {
     &:disabled {
         cursor: default;
     }
+}
+
+ul {
+    list-style: none;
 }
 
 .btn {

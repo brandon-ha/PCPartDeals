@@ -1,6 +1,6 @@
 @import-normalize;
 @import '~bootstrap/scss/bootstrap';
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Serif&family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jost&display=swap&family=Roboto&display=swap');
 @import './base/base';
 @import './components/container';
 @import './components/loading';
@@ -12,3 +12,5 @@
 @import './components/list';
 @import './components/scrollButton';
 @import './components/homepage';
+@import './components/creditsPage';
+@import './components/visibility';

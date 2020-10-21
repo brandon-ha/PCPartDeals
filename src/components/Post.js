@@ -98,9 +98,11 @@ const Post = (props) => {
         </a>
         <div className="post__info-block">
           {props.domain !== "self.buildapcsales" && <p><small>{props.domain}</small></p>}
-          <span><AiFillClockCircle /><span> {timeDiff} ago</span></span>
+          <span className="post__time-block"><AiFillClockCircle />
+            <p className="ml-1">{timeDiff} ago</p>
+          </span>
         </div>
-        <a href={redditUrl} rel='noopener noreferrer' target="_blank" className="post__reddit"><AiFillRedditCircle className="post__reddit-icon"/></a>
+        <a href={redditUrl} rel='noopener noreferrer' target="_blank" className="post__reddit"><AiFillRedditCircle className="post__reddit-icon" /></a>
       </div>
     </Card>
   );

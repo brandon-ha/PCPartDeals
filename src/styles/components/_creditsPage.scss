@@ -1,0 +1,17 @@
+.creditsPage {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.credits__title {
+    font-weight: 600;
+}
+
+.credits {
+    flex-grow: 2;
+    display: flex;
+    flex-direction: column;
+    margin: $l-size $xl-size;
+}
+

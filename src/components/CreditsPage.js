@@ -3,10 +3,17 @@ import Header from './Header';
 import Footer from './Footer';
 
 const CreditsPage = () => (
-    <div className="homepage">
+    <div className="creditsPage">
         <Header />
-        <div className="">
-            
+        <div className="credits">
+            <h1 className="credits__title">Attributions</h1>
+            <ul classname="credits__list">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
         </div>
         <Footer />
     </div>

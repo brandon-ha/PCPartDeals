@@ -12,7 +12,7 @@ const PostList = (props) => {
   const trackScroll = () => {
     if (props.flags.infiniteScroll) {
       const list = document.getElementById('post-list');
-      if (list.getBoundingClientRect().bottom <= window.innerHeight) {
+      if (list.getBoundingClientRect().bottom <= window.innerHeight && !props.flags.loading) {
         props.startGetMorePosts();
         window.removeEventListener('scroll', trackScroll);
       }
